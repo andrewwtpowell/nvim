@@ -8,4 +8,6 @@ sudo apt-get update
 sudo apt-get install neovim
 ```
 - ripgrep (for telescope)
-`sudo apt-get install ripgrep`
+```
+sudo apt-get install ripgrep
+```
