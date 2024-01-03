@@ -15,6 +15,8 @@ require('mason-lspconfig').setup({
 	},
 })
 
+require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
