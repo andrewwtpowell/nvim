@@ -9,6 +9,7 @@ require('mason-lspconfig').setup({
 		'gopls',
 		'lua_ls',
 		'pylsp',
+        'dockerls',
 	},
 	handlers = {
 		lsp.default_setup,
