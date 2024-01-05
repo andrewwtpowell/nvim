@@ -10,14 +10,15 @@ return {
 	  -- or                            , branch = '0.1.x',
 	  dependencies = { {'nvim-lua/plenary.nvim'} }
   },
-  {
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
-	  config = function()
-		  vim.cmd('colorscheme rose-pine')
-	  end
-  },
 
+  {
+	  'williamboman/mason.nvim',
+	  config = function()
+		  require('mason').setup()
+	  end,
+	  'williamboman/mason-lspconfig.nvim',
+	  'neovim/nvim-lspconfig',
+  },
 
   {
 	  'VonHeikemen/lsp-zero.nvim',
@@ -36,13 +37,6 @@ return {
 	  }
   },
 
-  {
-	  'williamboman/mason.nvim',
-	  config = function()
-		  require('mason').setup()
-	  end,
-	  'williamboman/mason-lspconfig.nvim',
-	  'neovim/nvim-lspconfig',
-  },
-
+  { 'rose-pine/neovim', name = 'rose-pine' },
+  { 'rebelot/kanagawa.nvim', name = 'kanagawa' },
 }
