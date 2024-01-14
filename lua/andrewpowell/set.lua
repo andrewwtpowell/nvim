@@ -36,3 +36,9 @@ vim.opt.colorcolumn = "80"
 vim.g.mapleader = " "
 
 vim.opt.mouse = ""
+
+vim.opt.virtualedit = "block"
+
+vim.opt.inccommand = "split"
+
+vim.opt.ignorecase = true
