@@ -24,13 +24,21 @@ return {
 
         require('mason').setup({})
         require('mason-lspconfig').setup({
-            ensure_installed = {},
+            ensure_installed = {
+                'lua_ls',
+                'clangd',
+                'rust_analyzer',
+                'pyright',
+            },
             handlers = {
                 lsp.default_setup,
             },
         })
 
         require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+        require('lspconfig').rust_analyzer.setup({})
+        require('lspconfig').clangd.setup({})
+        require('lspconfig').pyright.setup({})
 
         local cmp = require('cmp')
         local cmp_select = {behavior = cmp.SelectBehavior.Select}
