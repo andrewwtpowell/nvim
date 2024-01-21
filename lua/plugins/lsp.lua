@@ -1,7 +1,6 @@
 return {
 
     'VonHeikemen/lsp-zero.nvim',
-
     branch = 'v3.x',
 
     dependencies = {
@@ -20,25 +19,52 @@ return {
     config = function ()
         local lsp = require('lsp-zero')
 
+        -- lsp.on_attach(function(client, bufnr)
+        --     lsp.default_keymaps({buffer = bufnr})
+        -- end)
+
         lsp.preset('recommended')
 
-        require('mason').setup({})
+        require('mason').setup({
+            log_level = vim.log.levels.DEBUG
+        })
         require('mason-lspconfig').setup({
             ensure_installed = {
                 'lua_ls',
                 'clangd',
                 'rust_analyzer',
-                'pyright',
+                'jedi_language_server@0.35.1',
             },
             handlers = {
                 lsp.default_setup,
+
+                lua_ls = function ()
+                    require('lspconfig').lua_ls.setup({
+                        lsp.nvim_lua_ls()
+                    })
+                end,
+
+                rust_analyzer = function ()
+                    require('lspconfig').rust_analyzer.setup({
+                    })
+                end,
+
+                clangd = function ()
+                    require('lspconfig').clangd.setup({
+                    })
+                end,
+
+                pyright = function ()
+                    require('lspconfig').pyright.setup({
+                    })
+                end,
             },
         })
 
-        require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-        require('lspconfig').rust_analyzer.setup({})
-        require('lspconfig').clangd.setup({})
-        require('lspconfig').pyright.setup({})
+        -- require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+        -- require('lspconfig').rust_analyzer.setup({})
+        -- require('lspconfig').clangd.setup({})
+        -- require('lspconfig').pyright.setup({})
 
         local cmp = require('cmp')
         local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -48,7 +74,7 @@ return {
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
                 ['<Tab>'] = cmp.mapping.confirm({ select = true }),
-                ['<C-Space>'] = cmp.mapping.complete(),
+                ['<C-y>'] = cmp.mapping.complete(),
             })
         })
 
