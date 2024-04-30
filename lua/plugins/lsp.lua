@@ -38,23 +38,34 @@ return {
             handlers = {
                 lsp.default_setup,
 
-                lua_ls = function ()
+                ["lua_ls"] = function ()
                     require('lspconfig').lua_ls.setup({
-                        lsp.nvim_lua_ls()
+                        lsp.nvim_lua_ls(),
+                        settings = {
+                            Lua = {
+                                diagnostics = {
+                                    globals = {"vim"}
+                                }
+                            }
+                        }
                     })
                 end,
 
-                rust_analyzer = function ()
+                ["rust_analyzer"] = function ()
                     require('lspconfig').rust_analyzer.setup({
                     })
                 end,
 
-                clangd = function ()
+                ["clangd"] = function ()
                     require('lspconfig').clangd.setup({
+                        -- cmd = {
+                        --     "clangd-9",
+                        --     "--compile-commands-dir=/home/andrew/.config/nvim/compile_flags.txt"
+                        -- }
                     })
                 end,
 
-                pyright = function ()
+                ["pyright"] = function ()
                     require('lspconfig').pyright.setup({
                     })
                 end,
@@ -78,9 +89,11 @@ return {
             })
         })
 
-        lsp.set_preferences({
-            sign_icons = { }
-        })
+        -- lsp.set_preferences({
+        --     sign_icons = { }
+        -- })
+
+        vim.diagnostic.config({ virtual_text = true })
 
         lsp.setup()
     end
