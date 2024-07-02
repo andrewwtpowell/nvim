@@ -33,7 +33,7 @@ return {
                 'lua_ls',
                 'clangd',
                 'rust_analyzer',
-                'jedi_language_server@0.35.1',
+                'gopls',
             },
             handlers = {
                 lsp.default_setup,
@@ -65,10 +65,10 @@ return {
                     })
                 end,
 
-                ["pyright"] = function ()
-                    require('lspconfig').pyright.setup({
-                    })
+                ["gopls"] = function ()
+                    require('lspconfig').gopls.setup({})
                 end,
+
             },
         })
 
