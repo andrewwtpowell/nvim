@@ -42,3 +42,5 @@ vim.opt.virtualedit = "block"
 vim.opt.inccommand = "split"
 
 vim.opt.ignorecase = true
+
+vim.opt.conceallevel = 1
