@@ -7,19 +7,23 @@ return {
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
     },
-    config = function()
-        require("trouble").setup({})
-
-        vim.keymap.set("n", "<leader>tt", function ()
-            require("trouble").toggle()
-        end)
-
-        vim.keymap.set("n", "<leader>tn", function ()
-            require("trouble").next({skip_groups=true, jump=true})
-        end)
-
-        vim.keymap.set("n", "<leader>tp", function ()
-            require("trouble").previous({skip_groups=true, jump=true})
-        end)
-    end
+    cmd = "Trouble",
+    keys = {
+        {
+            "<leader>tt",
+            "<cmd>Trouble diagnostics toggle<cr>",
+            desc = "Diagnostics (Trouble)",
+        }
+    },
+    modes = {
+        test = {
+            mode = "diagnostics",
+            preview = {
+                type = "split",
+                relative = "win",
+                position = "right",
+                size = 0.3,
+            },
+        },
+    },
 }

@@ -83,14 +83,14 @@ return {
 
         local cmp = require('cmp')
         local cmp_select = {behavior = cmp.SelectBehavior.Select}
-        local cmp_format = require('lsp-zero').cmp_format({details = true})
+        -- local cmp_format = require('lsp-zero').cmp_format({details = true})
 
         cmp.setup({
             sources = {
                 {name = 'nvim_lsp'},
-                {name = 'buffer'},
+                -- {name = 'buffer'},
             },
-            formatting = cmp_format,
+            -- formatting = cmp_format,
             mapping = cmp.mapping.preset.insert({
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
