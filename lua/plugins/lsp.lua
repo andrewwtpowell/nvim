@@ -43,39 +43,15 @@ return {
         })
         require('mason-lspconfig').setup({
             ensure_installed = {
-                'lua_ls',
                 'clangd',
-                'rust_analyzer',
-                'gopls',
             },
             handlers = {
                 function(server_name)
                     require('lspconfig')[server_name].setup({})
                 end,
 
-                lua_ls = function ()
-                    require('lspconfig').lua_ls.setup({
-                        lsp.nvim_lua_ls(),
-                        settings = {
-                            Lua = {
-                                diagnostics = {
-                                    globals = {"vim"}
-                                }
-                            }
-                        }
-                    })
-                end,
-
-                rust_analyzer = function ()
-                    require('lspconfig').rust_analyzer.setup({ })
-                end,
-
                 clangd = function ()
                     require('lspconfig').clangd.setup({ })
-                end,
-
-                gopls = function ()
-                    require('lspconfig').gopls.setup({})
                 end,
 
             },
