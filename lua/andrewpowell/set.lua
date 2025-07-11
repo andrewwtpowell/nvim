@@ -43,4 +43,4 @@ vim.opt.inccommand = "split"
 
 vim.opt.ignorecase = true
 
-vim.opt.conceallevel = 1
+vim.opt.conceallevel = 0
